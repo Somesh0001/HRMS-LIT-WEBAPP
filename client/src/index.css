@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+
+  /* Premium HRMS Palette - Navy, Slate, and Emerald */
+  --background: 210 40% 98%;
+  --foreground: 222 47% 11%;
+  
+  --primary: 221 83% 53%;
+  --primary-foreground: 210 40% 98%;
+  
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222 47% 11%;
+  
+  --muted: 210 40% 96%;
+  --muted-foreground: 215 16% 47%;
+  
+  --accent: 262 83% 58%;
+  --accent-foreground: 210 40% 98%;
+  
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+  
+  --border: 214 32% 91%;
+  --input: 214 32% 91%;
+  --ring: 221 83% 53%;
+  
+  --radius: 0.75rem;
+  
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 11%;
+}
+
+.dark {
+  --background: 222 47% 11%;
+  --foreground: 210 40% 98%;
+  
+  --primary: 217 91% 60%;
+  --primary-foreground: 222 47% 11%;
+  
+  --secondary: 217 32% 17%;
+  --secondary-foreground: 210 40% 98%;
+  
+  --muted: 217 32% 17%;
+  --muted-foreground: 215 20% 65%;
+  
+  --accent: 262 83% 58%;
+  --accent-foreground: 210 40% 98%;
+  
+  --destructive: 0 62% 30%;
+  --destructive-foreground: 210 40% 98%;
+  
+  --border: 217 32% 17%;
+  --input: 217 32% 17%;
+  --ring: 224 76% 48%;
+  
+  --card: 224 71% 4%;
+  --card-foreground: 213 31% 91%;
+  
+  --popover: 224 71% 4%;
+  --popover-foreground: 213 31% 91%;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased font-body;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+}
+
+/* Mobile Responsive Styles - Desktop-First Approach */
+@media (max-width: 768px) {
+  /* Hide desktop sidebar on mobile */
+  aside {
+    display: none !important;
+  }
+
+  /* Adjust main content padding on mobile - remove left padding, add top padding for mobile nav bar */
+  .layout-main {
+    @apply pl-0 pt-16 !important;
+  }
+
+  /* Adjust content padding on smaller screens */
+  .layout-main > div {
+    @apply p-4 !important;
+  }
+
+  /* Make cards full width on mobile */
+  .grid {
+    @apply grid-cols-1 !important;
+  }
+
+  /* Adjust spacing for touch-friendly interaction */
+  button {
+    @apply min-h-12 !important;
+  }
+
+  /* Make tables more readable on mobile */
+  table {
+    @apply text-sm !important;
+  }
+
+  /* Ensure mobile nav items are touch-friendly */
+  .mobile-menu-trigger {
+    @apply min-w-10 min-h-10 !important;
+  }
+
+  /* Fix dialog z-index to appear above mobile nav */
+  [role="dialog"] {
+    z-index: 50 !important;
+  }
+
+  /* Dialog backdrop */
+  [role="presentation"] {
+    z-index: 49 !important;
+  }
+
+  /* Responsive headings */
+  h1 {
+    @apply text-2xl !important;
+  }
+
+  /* Form inputs responsive */
+  input,
+  select,
+  textarea {
+    @apply text-base !important;
+    @apply min-h-10 !important;
+  }
+
+  /* Table responsive - horizontal scroll if needed */
+  .overflow-hidden {
+    @apply overflow-x-auto !important;
+  }
+
+  /* Reduce padding in dialogs on mobile */
+  [role="dialog"] > div {
+    @apply p-4 !important;
+  }
+
+  /* Make search inputs full width on mobile */
+  input[placeholder*="Search"] {
+    @apply w-full !important;
+  }
+
+  /* Responsive flex for buttons */
+  .flex.justify-end {
+    @apply flex-col-reverse gap-2 !important;
+  }
+
+  /* Full width form fields */
+  .space-y-4 > div {
+    @apply w-full !important;
+  }
+}
